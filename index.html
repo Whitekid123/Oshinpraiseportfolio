@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praise Oshin — Frontend Engineer × Web Architect</title>
+  <meta name="description" content="Frontend engineer and technical lead with a Mechanical Engineering foundation. I architect production-grade web applications in TypeScript, React, and Next.js with engineering-grade precision." />
+  <meta name="keywords" content="Praise Oshin, frontend developer, web architect, React, Next.js, TypeScript, technical lead, Nigeria, portfolio" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Praise Oshin — Frontend Engineer × Web Architect" />
+  <meta property="og:description" content="I don't build websites. I architect web systems. Engineering-grade precision meets modern frontend mastery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/images/og-share.png" />
+  <meta property="og:url" content="https://praiseoshin.dev" />
+  <meta property="og:site_name" content="Praise Oshin Portfolio" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Praise Oshin — Frontend Engineer × Web Architect" />
+  <meta name="twitter:description" content="I don't build websites. I architect web systems." />
+  <meta name="twitter:image" content="/images/og-share.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <link rel="stylesheet" href="/src/style.css" />
+  
+  <script>
+    document.documentElement.classList.add('animations-enabled');
+    window.addEventListener('DOMContentLoaded', () => {
+      // Graceful fallback: if GSAP fails to load, remove class so everything is visible
+      if (!window.gsap || !window.ScrollTrigger) {
+        document.documentElement.classList.remove('animations-enabled');
+      }
+    });
+  </script>
+  <style>
+    /* Prevent Flash of Unstyled Content (FOUC) by hiding elements initially if JS & GSAP are running */
+    .animations-enabled .hero__badge,
+    .animations-enabled .hero__title .reveal-inner,
+    .animations-enabled .hero__subtitle,
+    .animations-enabled .hero__actions,
+    .animations-enabled .nav,
+    .animations-enabled .section-header__tag,
+    .animations-enabled .section-header__title,
+    .animations-enabled .section-header .reveal-inner,
+    .animations-enabled .animate-in,
+    .animations-enabled .bento-item,
+    .animations-enabled .contact__cta-card,
+    .animations-enabled .contact__social {
+      opacity: 0;
+    }
+    .animations-enabled .hero__title .reveal-inner,
+    .animations-enabled .section-header .reveal-inner {
+      transform: translateY(110%);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- NAVIGATION                              -->
+  <!-- ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#home" class="nav__logo">
+        <span class="nav__logo-icon">⬡</span>
+        <span class="nav__logo-text">Praise Oshin</span>
+      </a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+        <li><a href="#projects" class="nav__link" data-section="projects">Projects</a></li>
+        <li><a href="#capabilities" class="nav__link" data-section="capabilities">Capabilities</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta" data-section="contact">Let's Work Together</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO SECTION                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge fade-up">
+          <span class="hero__badge-dot"></span> Available for high-ticket freelance
+        </div>
+        <h1 class="hero__title">
+          <div class="reveal-wrap"><span class="reveal-inner">Engineering the <span class="hero__title-accent">future</span></span></div>
+          <div class="reveal-wrap"><span class="reveal-inner">of web systems.</span></div>
+        </h1>
+        <p class="hero__subtitle fade-up">
+          I don't just build websites. I architect robust, production-grade web interfaces. 
+          Precision engineering meets modern frontend mastery.
+        </p>
+        <div class="hero__actions fade-up">
+          <a href="#projects" class="btn btn--primary">View Selected Work</a>
+          <a href="#contact" class="btn btn--outline">Start a Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SCROLLING MARQUEE STRIP                -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">Frontend Architecture</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">React & Next.js</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">TypeScript</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Systems Design</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Production-Grade UI</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Performance</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Frontend Architecture</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">React & Next.js</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">TypeScript</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Systems Design</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Production-Grade UI</span>
+      <span class="marquee__dot">◆</span>
+      <span class="marquee__item">Performance</span>
+      <span class="marquee__dot">◆</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ABOUT SECTION                           -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">01 — About Me</span>
+        <h2 class="section-header__title">The engineer behind<br /><span class="accent-text">the interface</span></h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__content animate-in">
+          <p class="about__lead">
+            I studied mechanical engineering — and discovered that the thinking behind 
+            building bridges is the same thinking behind building <em>great software.</em>
+          </p>
+
+          <div class="about__body">
+            <p>
+              Structural analysis, systems design, first principles. That's my foundation. 
+              Now I apply it to the web. My stack is <strong>TypeScript, React, and Next.js</strong> — 
+              and I focus on the frontends most people avoid: data-heavy dashboards, multi-page 
+              platforms, and conversion-optimized interfaces that perform under real load.
+            </p>
+            <p>
+              I ship fast, but I don't cut corners. Every component has a purpose. 
+              Every abstraction is earned. No template shortcuts, no excuses.
+            </p>
+          </div>
+
+          <div class="about__signature">
+            <span class="about__signature-line"></span>
+            <span class="about__signature-text">Engineering-grade frontend</span>
+          </div>
+        </div>
+        <div class="about__visual animate-in">
+          <div class="about__card">
+            <div class="about__card-glow"></div>
+            <div class="about__card-inner">
+              <div class="about__avatar">
+                <div class="about__avatar-ring"></div>
+                <img src="/images/headshot.png" alt="Praise Oshin" />
+              </div>
+              <div class="about__tagline">
+                "Structure first,<br />pixels second."
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Strip -->
+      <div class="about__stats">
+        <div class="about__stat">
+          <span class="about__stat-number" data-count="10">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Projects Shipped</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-number" data-count="3">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Years Building</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-number" data-count="4">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Tech Stacks</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-number" data-count="90">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Lighthouse Avg</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PROJECTS SECTION                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">02 — Featured Work</span>
+        <h2 class="section-header__title">Selected<br /><span class="accent-text">work</span></h2>
+      </div>
+
+      <!-- Project 1: Tobams Group -->
+      <article class="project-card animate-in" id="project-tobams">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-tobams.png" alt="Tobams Group Training and Development platform" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Corporate Training</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">Tobams Group</h3>
+          <p class="project-card__tagline">Training and Development Platform</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Architected a comprehensive platform for corporate training, skill enhancement, and career development resources.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>Tobams Group needed a centralized, professional hub to showcase their comprehensive range of training programs. The platform had to support complex information architecture, handle consultation bookings, and maintain a highly credible corporate aesthetic.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Scalable Architecture</strong> — Built a robust frontend designed to handle dynamic course content, assessments, and corporate partnerships.</li>
+                <li><strong>Professional UI/UX</strong> — Engineered a clean, authoritative interface with intuitive navigation for both individual professionals and corporate clients.</li>
+                <li><strong>Seamless Conversion Funnel</strong> — Integrated streamlined booking systems and assessment gateways to drive user engagement.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">Pro</span>
+                <span class="project-card__result-label">Corporate UI</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">Fast</span>
+                <span class="project-card__result-label">Load Times</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">All</span>
+                <span class="project-card__result-label">Viewports</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">TypeScript</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-tobams">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://tobams-training-ghpa.vercel.app/" target="_blank" rel="noopener" class="btn btn--small btn--primary">Live Demo <i class="ph ph-arrow-square-out"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: Flurzi Commit -->
+      <article class="project-card animate-in" id="project-flurzicommit">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-flurzicommit.png" alt="Flurzi Commit landing page" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Fintech SaaS</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">Flurzi Commit</h3>
+          <p class="project-card__tagline">Fixed-Term Commitment Dashboard</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Engineered a conversion-focused landing page and financial dashboard for tracking fixed-term commitments and transparent payments.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>Flurzi required a highly polished, trustworthy interface for their commitment plans. Users needed absolute clarity on their financial progress, upcoming payments, and plan status within a single, secure dashboard.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Conversion Optimization</strong> — Developed a high-converting landing page with strategic CTAs and progressive disclosure of financial products.</li>
+                <li><strong>Secure Architecture</strong> — Built with a focus on trust and transparency, utilizing clean layouts and data visualization for payment tracking.</li>
+                <li><strong>Performance Tuning</strong> — Optimized asset delivery and component rendering for near-instant load times to reduce bounce rates.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">Zero</span>
+                <span class="project-card__result-label">Surprises</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">1</span>
+                <span class="project-card__result-label">Simple Dashboard</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">Fast</span>
+                <span class="project-card__result-label">Interactive UI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">Tailwind CSS</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-flurzicommit">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://flurzicommit-landing-page.vercel.app/" target="_blank" rel="noopener" class="btn btn--small btn--primary">Live Demo <i class="ph ph-arrow-square-out"></i></a>
+            <a href="https://github.com/Whitekid123/flurzicommit-landing-page" target="_blank" rel="noopener" class="btn btn--small btn--outline">Source <i class="ph ph-github-logo"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: EmpowerNG -->
+      <article class="project-card animate-in" id="project-empowerng">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-empowerng.png" alt="EmpowerNG NGO website" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Non-Profit Platform</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">EmpowerNG</h3>
+          <p class="project-card__tagline">The Modern Griot — Empowering Nigerian Communities</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Developed a sophisticated, accessible platform for a Nigerian NGO to drive digital empowerment, skills training, and community engagement.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>EmpowerNG needed a digital presence that balanced modern, premium aesthetics with extreme accessibility and fast load times for regions with varied internet connectivity.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Accessible Design System</strong> — Implemented high-contrast modes, legible typography (Plus Jakarta Sans/Inter), and screen-reader optimized semantics.</li>
+                <li><strong>Vite + React Core</strong> — Leveraged a lightweight Vite setup for minimal initial bundle size and fast hydration.</li>
+                <li><strong>Component Modularity</strong> — Built a reusable UI library tailored for non-profit storytelling and donation funnels.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">100%</span>
+                <span class="project-card__result-label">Accessibility</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">PWA</span>
+                <span class="project-card__result-label">Ready</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">Global</span>
+                <span class="project-card__result-label">Reach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Accessibility API</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-empowerng">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://ngo-website-iota-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--small btn--primary">Live Demo <i class="ph ph-arrow-square-out"></i></a>
+            <a href="https://github.com/Whitekid123/ngo-website" target="_blank" rel="noopener" class="btn btn--small btn--outline">Source <i class="ph ph-github-logo"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4: F1 Pulse -->
+      <article class="project-card animate-in" id="project-f1pulse">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-f1pulse.png" alt="F1 Pulse Live Telemetry Dashboard" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Data Visualization</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">F1 Pulse</h3>
+          <p class="project-card__tagline">Live Telemetry & Mission Control</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Architected a real-time data dashboard rendering complex F1 telemetry, session countdowns, and track conditions.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>F1 fans and engineers need instant access to telemetry, track temps, and lap times without latency. The interface had to handle high-frequency data updates without dropping frames or causing layout shifts, all while looking like a high-end pitwall monitor.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Real-Time Data Pipeline</strong> — Engineered state management to process and render live race telemetry without bottlenecking the main thread.</li>
+                <li><strong>Complex UI Architecture</strong> — Built a modular dashboard with distinct widgets for circuit data, countdown timers, and ambient conditions.</li>
+                <li><strong>Engineering Aesthetic</strong> — Designed a dark-mode, high-contrast UI using typography and layout to mimic authentic F1 mission control software.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">Live</span>
+                <span class="project-card__result-label">Telemetry</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">0ms</span>
+                <span class="project-card__result-label">Layout Shift</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">Pro</span>
+                <span class="project-card__result-label">Pitwall UI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Data Viz</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-f1pulse">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://f1-tracker-chi.vercel.app/" target="_blank" rel="noopener" class="btn btn--small btn--primary">Live Demo <i class="ph ph-arrow-square-out"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 5: PlayVault -->
+      <article class="project-card animate-in" id="project-playvault">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-playvault.png" alt="PlayVault gaming ecosystem platform" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Web3 Gaming Hub</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">PlayVault</h3>
+          <p class="project-card__tagline">Unified Gaming Ecosystem & Token Economy</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Architected a high-performance web3 gaming hub connecting multiple game worlds into a single, unified economy and wallet system.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>PlayVault needed a centralized platform to act as the "metagame layer" for seven distinct game worlds. The interface had to handle cross-game progression, wallet integration, and token (FLC) management while delivering a premium, immersive gamer experience.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Unified Hub Infrastructure</strong> — Built a scalable React frontend to act as the central entry point for the entire gaming ecosystem.</li>
+                <li><strong>Immersive UI/UX</strong> — Engineered custom 3D particle systems and scroll-linked animations for a futuristic, cyber-aesthetic experience.</li>
+                <li><strong>Responsive Design</strong> — Ensured seamless performance across all devices, maintaining complex animation fidelity on mobile viewports.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">7</span>
+                <span class="project-card__result-label">Game Worlds</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">1</span>
+                <span class="project-card__result-label">Unified Wallet</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">FLC</span>
+                <span class="project-card__result-label">Token Economy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Framer Motion</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-playvault">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://playvault-final-fsbs.vercel.app/" target="_blank" rel="noopener" class="btn btn--small btn--primary">Live Demo <i class="ph ph-arrow-square-out"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 6: TacticalEngine -->
+      <article class="project-card animate-in" id="project-tacticalengine">
+        <div class="project-card__image-wrapper">
+          <img src="/images/project-tacticalengine.png" alt="TacticalEngine Football Analysis Platform" loading="lazy" />
+          <div class="project-card__image-overlay">
+            <span class="project-card__badge">Data Visualization</span>
+          </div>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">TacticalEngine</h3>
+          <p class="project-card__tagline">Football Analysis Platform</p>
+          <p class="project-card__impact">
+            <i class="ph ph-lightning"></i>
+            Built a data-heavy frontend for advanced football analysis — handling video ingestion, complex document parsing, and rich tactical data visualization.
+          </p>
+
+          <div class="project-card__details">
+            <div class="project-card__section">
+              <h4><i class="ph ph-target"></i> The Challenge</h4>
+              <p>Football analysts needed a unified, high-performance tool to process and visualize complex tactical data — including video streams and strategic documents — in a single interface without frame drops or layout shift.</p>
+            </div>
+            <div class="project-card__section">
+              <h4><i class="ph ph-gear-six"></i> The Architecture</h4>
+              <ol>
+                <li><strong>Multimodal Data Pipeline</strong> — Engineered robust data flows capable of processing diverse input types including video streams and structured documents simultaneously.</li>
+                <li><strong>Advanced Visualization Layer</strong> — Developed rich, interactive components to translate complex tactical insights into clear, accessible visual representations.</li>
+                <li><strong>TypeScript-First Codebase</strong> — Strict typing and a component-driven architecture ensure a maintainable, extensible, and bug-resistant system at scale.</li>
+              </ol>
+            </div>
+            <div class="project-card__results">
+              <div class="project-card__result">
+                <span class="project-card__result-value">Multi</span>
+                <span class="project-card__result-label">Modal Inputs</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">Rich</span>
+                <span class="project-card__result-label">Data Viz</span>
+              </div>
+              <div class="project-card__result">
+                <span class="project-card__result-value">TS</span>
+                <span class="project-card__result-label">Type-Safe</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card__tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+          <div class="project-card__actions">
+            <button class="btn btn--small btn--outline project-toggle" data-project="project-tacticalengine">
+              <span class="project-toggle__show">View Details</span>
+              <span class="project-toggle__hide">Hide Details</span>
+            </button>
+            <a href="https://github.com/Whitekid123" target="_blank" rel="noopener" class="btn btn--small btn--outline">GitHub <i class="ph ph-github-logo"></i></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SERVICES SECTION                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BENTO SECTION (SERVICES & SKILLS)       -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="bento-section" id="capabilities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">03 — Capabilities</span>
+        <h2 class="section-header__title">
+          <div class="reveal-wrap"><span class="reveal-inner">What I <span class="accent-text">can build</span></span></div>
+        </h2>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento 1: Custom Frontend Architecture -->
+        <div class="bento-item bento-item--large">
+          <div class="bento-item__header">
+            <i class="ph ph-tree-structure"></i>
+            <h3 class="bento-item__title">Custom Architecture</h3>
+            <p class="bento-item__desc">
+              I design and build component architectures that scale. From multi-route dashboards to data-intensive platforms. If your frontend needs to handle real complexity (rich state management, real-time data, complex routing), I build it to last.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento 2: Frontend Tech -->
+        <div class="bento-item bento-item--tall">
+          <div class="bento-item__header">
+            <i class="ph ph-layout"></i>
+            <h3 class="bento-item__title">Frontend Stack</h3>
+          </div>
+          <div class="bento-item__list">
+            <span>TypeScript</span><span>React</span><span>Next.js</span>
+            <span>Tailwind</span><span>Three.js</span><span>GSAP</span><span>Vite</span>
+          </div>
+        </div>
+
+        <!-- Bento 3: Premium Landing Pages -->
+        <div class="bento-item">
+          <div class="bento-item__header">
+            <i class="ph ph-browser"></i>
+            <h3 class="bento-item__title">Premium UI</h3>
+            <p class="bento-item__desc">Pixel-perfect, conversion-optimized interfaces built with obsessive attention to detail and 60fps animations.</p>
+          </div>
+        </div>
+
+        <!-- Bento 4: Backend Tech -->
+        <div class="bento-item">
+          <div class="bento-item__header">
+            <i class="ph ph-cloud"></i>
+            <h3 class="bento-item__title">Infrastructure</h3>
+          </div>
+          <div class="bento-item__list">
+            <span>Node.js</span><span>APIs</span><span>Vercel</span><span>Git</span>
+          </div>
+        </div>
+
+        <!-- Bento 5: Full-Stack Web Apps -->
+        <div class="bento-item bento-item--large">
+          <div class="bento-item__header">
+            <i class="ph ph-stack"></i>
+            <h3 class="bento-item__title">Full-Stack Delivery</h3>
+            <p class="bento-item__desc">
+              Complete web applications with modern Next.js frontends, API integrations, and secure authentication flows. I handle the full stack so you get a single engineer who owns the outcome.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CONTACT / CTA SECTION                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">04 — Get In Touch</span>
+        <h2 class="section-header__title">Let's work<br /><span class="accent-text">together</span></h2>
+      </div>
+
+      <div class="contact__grid">
+        <!-- CTA Cards -->
+        <div class="contact__ctas">
+          <div class="contact__cta-card contact__cta-card--recruiter">
+            <div class="contact__cta-icon"><i class="ph ph-briefcase"></i></div>
+            <h3>Looking for a frontend engineer who thinks in systems?</h3>
+            <p>I'm currently open to remote Frontend and Full-Stack Engineering roles. I bring engineering-grade discipline to modern web development — structured thinking, clean abstractions, and production-ready code from day one.</p>
+            <a href="/Praise Oshin resume.pdf" download class="btn btn--primary btn--small">
+              <i class="ph ph-download-simple"></i> Download Resume
+            </a>
+          </div>
+
+          <div class="contact__cta-card contact__cta-card--client">
+            <div class="contact__cta-icon"><i class="ph ph-rocket-launch"></i></div>
+            <h3>Ready to build something that actually ships?</h3>
+            <p>Whether you need a high-converting landing page, a complex data platform, or a full-stack web application — I deliver precision-engineered solutions on a startup timeline. No scope creep, no template shortcuts, no excuses.</p>
+            <a href="#contact-form" class="btn btn--accent btn--small">
+              Start a Project <i class="ph ph-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact__form-wrapper animate-in" id="contact-form">
+          <form class="contact__form" id="contactForm" novalidate>
+            <div class="contact__form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="contact__form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="email" placeholder="john@example.com" required />
+            </div>
+            <div class="contact__form-group">
+              <label for="contact-type">What brings you here?</label>
+              <select id="contact-type" name="type" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="hiring">I'm Hiring</option>
+                <option value="project">I Have a Project</option>
+                <option value="collaboration">Let's Collaborate</option>
+                <option value="other">Something Else</option>
+              </select>
+            </div>
+            <div class="contact__form-group">
+              <label for="contact-message">Your Message</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project, role, or idea..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full" id="contact-submit">
+              <span>Send Message</span>
+              <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+            <div class="contact__form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="contact__socials">
+        <a href="https://github.com/Whitekid123" target="_blank" rel="noopener" class="contact__social" aria-label="GitHub">
+          <i class="ph ph-github-logo"></i>
+        </a>
+        <a href="https://linkedin.com/in/oshin-praise-oluwapelumi-917b33366" target="_blank" rel="noopener" class="contact__social" aria-label="LinkedIn">
+          <i class="ph ph-linkedin-logo"></i>
+        </a>
+        <a href="mailto:oshinpraiseoluwapelumi@gmail.com" class="contact__social" aria-label="Email">
+          <i class="ph ph-envelope-simple"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FOOTER                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p class="footer__copy">&copy; 2026 Praise Oshin</p>
+        <p class="footer__credit">Designed & built by hand</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Animation & Scroll Libraries -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
